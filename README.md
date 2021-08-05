@@ -9,9 +9,18 @@ Dependencies required:
 
 First, run the development server:
 
+- After installing Yarn, clone this repo with: 
 ```bash
-npm run dev
-# or
+git clone https://github.com/amankr1619/CNFrontend.git
+```
+- Now, Run 
+```bash
+yarn install
+```
+to install the dependencies.
+- Finally run the development server with: 
+
+```bash
 yarn dev
 ```
 
