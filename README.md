@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Make sure Node, NPM and Yarn is installed in your system. This project uses Yarn, so stick with yarn based commands.
+
+Dependencies required:
+- NextJS
+- ChakraUI
 ## Getting Started
 
 First, run the development server:
