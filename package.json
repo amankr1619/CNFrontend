@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@material-ui/icons": "^4.11.2",
     "framer-motion": "^4",
     "next": "10.x",
     "react": "17.x",
