@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+// import FormT from './form'
 import { Container,
     Wrap,
     Heading,
@@ -17,6 +18,7 @@ const Wrapper = () => {
         <Flex>
     <Box py={6} px={[2, 5, 12, 24]}>
         <Card />
+        {/* <FormT /> */}
     </Box>
     <Box py={6} px={[2, 5, 12, 24]}>
     <Box

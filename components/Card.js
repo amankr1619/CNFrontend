@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { Formik } from 'formik';
+
 import { 
     Heading,
     Box,
@@ -6,11 +9,35 @@ import {
     Stack,
     Button,
     useColorModeValue,
-    Switch,
+    Switch
  } from "@chakra-ui/react"
+ import { Form, useField } from 'react-final-form'
+import { connectionRequest } from '../utils/handleAPI';
+
+const onSubmit = async values => {
+    let proto
+    try{
+        const data = JSON.stringify(values.toppis[0])
+        
+        if (JSON.stringify(values.toppis[0]) === undefined) {
+          proto = true
+        }
+        else{
+            proto = false
+        }
+    }
+    catch {
+        proto = true
+    }
+    const res = connectionRequest({proto})
+    console.log(res)
+}
+
 
 const Card = () => {
+    
     return (
+        
         <Box
             maxW={'370px'}
             w={'370px'}
@@ -42,34 +69,63 @@ const Card = () => {
                         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
                         erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
                         et ea rebum.
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                        et ea rebum.
+
                     </Text>
-                    <Flex p = "5">
-                        <Text color={'gray.500'} p ="1">TCP</Text>
-                        <Switch colorScheme="teal" size="lg" />
-                        <Text color={'gray.500'} p ="1">UDP</Text>
-                    </Flex>
-                    
-                </Stack>
-                <Button
-                    w={'full'}
-                    mt={1}
-                    bg={useColorModeValue('#48BB78', 'green.400')}
-                    color={'white'}
-                    rounded={'md'}
-                    _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'lg',
-                    }}
-                >
-                    Connect
-                </Button>
+                    </Stack>
+                    <Form
+                    onSubmit={onSubmit}
+                    render={({
+                    handleSubmit,
+                    submitting,
+                    values
+                    }) => (
+                    <Box
+                        as="form"
+                        p={4}
+                        borderWidth="1px"
+                        rounded="lg"
+                        shadow="1px 1px 3px rgba(0,0,0,0.3)"
+                        onSubmit={handleSubmit}
+                    >
+                        <Flex p = "5">
+                                <Text color={'gray.500'} p ="1">TCP</Text>
+                                <ConnectionControl name="toppis" value="UDP" />
+                                <Text color={'gray.500'} p ="1">UDP</Text>
+                            </Flex>
+                        <Button
+                            isLoading={submitting}
+                            loadingText="Submitting"
+                            type="submit"
+                            w={'full'}
+                            mt={1}
+                            bg={useColorModeValue('#48BB78', 'green.400')}
+                            color={'white'}
+                            rounded={'md'}
+                            _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                            }}
+                        >
+                            Submit
+                        </Button>
+                    </Box>
+                    )}
+                />
             </Box>
         </Box>
     )
 }
+
+const ConnectionControl = ({ name, value }) => {
+    const {
+      input: {  ...input }
+    } = useField(name, {
+      type: 'checkbox',
+      value
+  })
+    return (
+      <Switch {...input} colorScheme="teal" size="lg"  />
+    )
+  }
 
 export default Card
