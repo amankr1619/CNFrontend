@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, useField } from 'react-final-form'
 import { connectionRequest } from '../utils/handleAPI';
 
-import { 
+import {
     Container,
     Wrap,
     Box,
@@ -36,12 +36,12 @@ const Wrapper = () => {
         setMessage(res.messageFromClient) 
     }
 
-    
-    
+
+
     return (
         <Flex>
             <Box py={6} px={[2, 5, 12, 24]}>
-            <Box
+                <Box
                     maxW={'370px'}
                     w={'370px'}
                     bg={useColorModeValue('white', 'gray.800')}
@@ -50,7 +50,7 @@ const Wrapper = () => {
                     rounded={'md'}
                     overflow={'hidden'}
                 >
-        
+
 
                     <Box p={6}>
                         <Stack spacing={0} align={'center'} mb={5}>
@@ -74,13 +74,13 @@ const Wrapper = () => {
                                 et ea rebum.
 
                             </Text>
-                            </Stack>
-                            <Form
+                        </Stack>
+                        <Form
                             onSubmit={onSubmit}
                             render={({
-                            handleSubmit,
-                            submitting,
-                            values
+                                handleSubmit,
+                                submitting,
+                                values
                             }) => (
                             <Box
                                 as="form"
@@ -137,8 +137,8 @@ const Wrapper = () => {
 
             <Box py={6} px={[2, 5, 12, 24]}>
                 <Box
-                    w={'1200px'}
-                    h={'700px'}
+                    w={'400px'}
+                    h={'300px'}
                     bg={useColorModeValue('white', 'gray.800')}
                     boxShadow={'3xl'}
                     border={'solid #e0e0e0'}
