@@ -13,28 +13,27 @@ import {
     Button,
     useColorModeValue,
     Switch,
+    useBoolean
  } from "@chakra-ui/react"
 
 
 const Wrapper = () => {
-    let [proto, SetProto] = useState('TCP')
-    const onSubmit = async values => {
+
+    const [proto, setProto] = useBoolean()
+    const [close, closeButton] = useBoolean()
+    const [message, setMessage] = useState([])
+    const onSubmit = async () => {
+        let req;
+        proto ? req = 'UDP' : req = 'TCP'
+        console.log(`This is ${req}`)
+        console.log(`Close button: ${close}`)
+    
+        console.log(`Close in button: ${close}`)
+        const res = await connectionRequest(req)
         
-        try{
-            const data = JSON.stringify(values.toppis[0])
-            
-            if (JSON.stringify(values.toppis[0]) === undefined) {
-              SetProto(proto = 'TCP')
-            }
-            else{
-                SetProto(proto = 'UDP')
-            }
-        }
-        catch {
-            SetProto(proto = 'TCP')
-        }
-        const res = await connectionRequest({proto})
+    
         console.log(res.messageFromClient)
+        setMessage(res.messageFromClient) 
     }
 
     
@@ -93,12 +92,12 @@ const Wrapper = () => {
                             >
                                 <Flex p = "5">
                                         <Text color={'gray.500'} p ="1">TCP</Text>
-                                        <ConnectionControl name="toppis" value="UDP" />
+                                        <Switch name="toppis" isDisabled={submitting} onChange={setProto.toggle}  colorScheme="teal" size="lg"  value="connection" />
                                         <Text color={'gray.500'} p ="1">UDP</Text>
                                     </Flex>
                                 <Button
                                     isLoading={submitting}
-                                    loadingText="Submitting"
+                                    loadingText="Listening to Requests"
                                     type="submit"
                                     w={'full'}
                                     mt={1}
@@ -111,6 +110,20 @@ const Wrapper = () => {
                                     }}
                                 >
                                     Submit
+                                </Button>
+                                <Button
+                                    onClick={closeButton.toggle}
+                                    w={'full'}
+                                    mt={1}
+                                    bg={useColorModeValue('#48BB78', 'red.400')}
+                                    color={'white'}
+                                    rounded={'md'}
+                                    _hover={{
+                                    transform: 'translateY(-2px)',
+                                    boxShadow: 'lg',
+                                    }}
+                                >
+                                    Close
                                 </Button>
                             </Box>
                             )}
@@ -133,7 +146,8 @@ const Wrapper = () => {
                     overflow={'hidden'}
                 >
                     <Box p={6}>
-                        <Heading fontSize={'lg'}>Connection Mode: {proto}</Heading>
+                        <Heading fontSize={'lg'}>Connection Mode: {proto ? 'UDP' : 'TCP'} Close Button: {close.toString()}</Heading>
+                        {message}
                     </Box>
                 </Box>
             </Box>
@@ -141,16 +155,5 @@ const Wrapper = () => {
 
     )
 }
-const ConnectionControl = ({ name, value }) => {
-    const {
-      input: {  ...input }
-    } = useField(name, {
-      type: 'checkbox',
-      value
-  })
-    return (
-      <Switch {...input} colorScheme="teal" size="lg"  />
-    )
-  }
 
 export default Wrapper
