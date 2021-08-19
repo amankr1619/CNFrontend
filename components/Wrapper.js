@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, useField } from 'react-final-form'
 import { connectionRequest } from '../utils/handleAPI';
 
-import { 
+import {
     Container,
     Wrap,
     Box,
@@ -13,36 +13,36 @@ import {
     Button,
     useColorModeValue,
     Switch,
- } from "@chakra-ui/react"
+} from "@chakra-ui/react"
 
 
 const Wrapper = () => {
     let [proto, SetProto] = useState('TCP')
     const onSubmit = async values => {
-        
-        try{
+
+        try {
             const data = JSON.stringify(values.toppis[0])
-            
+
             if (JSON.stringify(values.toppis[0]) === undefined) {
-              SetProto(proto = 'TCP')
+                SetProto(proto = 'TCP')
             }
-            else{
+            else {
                 SetProto(proto = 'UDP')
             }
         }
         catch {
             SetProto(proto = 'TCP')
         }
-        const res = await connectionRequest({proto})
+        const res = await connectionRequest({ proto })
         console.log(res.messageFromClient)
     }
 
-    
-    
+
+
     return (
         <Flex>
             <Box py={6} px={[2, 5, 12, 24]}>
-            <Box
+                <Box
                     maxW={'370px'}
                     w={'370px'}
                     bg={useColorModeValue('white', 'gray.800')}
@@ -51,7 +51,7 @@ const Wrapper = () => {
                     rounded={'md'}
                     overflow={'hidden'}
                 >
-        
+
 
                     <Box p={6}>
                         <Stack spacing={0} align={'center'} mb={5}>
@@ -75,44 +75,44 @@ const Wrapper = () => {
                                 et ea rebum.
 
                             </Text>
-                            </Stack>
-                            <Form
+                        </Stack>
+                        <Form
                             onSubmit={onSubmit}
                             render={({
-                            handleSubmit,
-                            submitting,
-                            values
+                                handleSubmit,
+                                submitting,
+                                values
                             }) => (
-                            <Box
-                                as="form"
-                                p={4}
-                                borderWidth="1px"
-                                rounded="lg"
-                                shadow="1px 1px 3px rgba(0,0,0,0.3)"
-                                onSubmit={handleSubmit}
-                            >
-                                <Flex p = "5">
-                                        <Text color={'gray.500'} p ="1">TCP</Text>
-                                        <ConnectionControl name="toppis" value="UDP" />
-                                        <Text color={'gray.500'} p ="1">UDP</Text>
-                                    </Flex>
-                                <Button
-                                    isLoading={submitting}
-                                    loadingText="Submitting"
-                                    type="submit"
-                                    w={'full'}
-                                    mt={1}
-                                    bg={useColorModeValue('#48BB78', 'green.400')}
-                                    color={'white'}
-                                    rounded={'md'}
-                                    _hover={{
-                                    transform: 'translateY(-2px)',
-                                    boxShadow: 'lg',
-                                    }}
+                                <Box
+                                    as="form"
+                                    p={4}
+                                    borderWidth="1px"
+                                    rounded="lg"
+                                    shadow="1px 1px 3px rgba(0,0,0,0.3)"
+                                    onSubmit={handleSubmit}
                                 >
-                                    Submit
-                                </Button>
-                            </Box>
+                                    <Flex p="5" alignItems="center" justifyContent="center">
+                                        <Text color={'gray.500'} p="1">TCP</Text>
+                                        <ConnectionControl name="toppis" value="UDP" />
+                                        <Text color={'gray.500'} p="1">UDP</Text>
+                                    </Flex>
+                                    <Button
+                                        isLoading={submitting}
+                                        loadingText="Submitting"
+                                        type="submit"
+                                        w={'full'}
+                                        mt={1}
+                                        bg={useColorModeValue('#48BB78', 'green.400')}
+                                        color={'white'}
+                                        rounded={'md'}
+                                        _hover={{
+                                            transform: 'translateY(-2px)',
+                                            boxShadow: 'lg',
+                                        }}
+                                    >
+                                        Submit
+                                    </Button>
+                                </Box>
                             )}
                         />
                     </Box>
@@ -124,8 +124,8 @@ const Wrapper = () => {
 
             <Box py={6} px={[2, 5, 12, 24]}>
                 <Box
-                    w={'1200px'}
-                    h={'700px'}
+                    w={'400px'}
+                    h={'300px'}
                     bg={useColorModeValue('white', 'gray.800')}
                     boxShadow={'3xl'}
                     border={'solid #e0e0e0'}
@@ -143,14 +143,14 @@ const Wrapper = () => {
 }
 const ConnectionControl = ({ name, value }) => {
     const {
-      input: {  ...input }
+        input: { ...input }
     } = useField(name, {
-      type: 'checkbox',
-      value
-  })
+        type: 'checkbox',
+        value
+    })
     return (
-      <Switch {...input} colorScheme="teal" size="lg"  />
+        <Switch {...input} colorScheme="teal" size="lg" />
     )
-  }
+}
 
 export default Wrapper
