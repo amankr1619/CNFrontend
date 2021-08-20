@@ -23,7 +23,6 @@ const Header = () => {
                     />
                 </Button>
             </Link>
-
             <Center w="100%" p={5}>
                 <Text fontSize="3xl" fontWeight="bold">Indian Institute of Information Technology, Nagpur</Text>
             </Center>

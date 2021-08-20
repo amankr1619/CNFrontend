@@ -1,44 +1,33 @@
-import React, { useState } from 'react';
-import { Form, useField } from 'react-final-form'
-import { connectionRequest } from '../utils/handleAPI';
-
+/* eslint-disable jsx-a11y/accessible-emoji */
+import React from 'react'
+import { render } from 'react-dom'
 import {
-    Container,
-    Wrap,
-    Box,
-    Heading,
-    Flex,
-    Text,
-    Stack,
-    Button,
-    useColorModeValue,
-    Switch,
-    useBoolean
- } from "@chakra-ui/react"
+  Box,
+  Button,
+  ButtonGroup,
+  ThemeProvider,
+  theme,
+  FormLabel,
+  Input,
+  Flex,
+  Stack,
+  useColorModeValue,
+  Heading,
+  Text,
+} from '@chakra-ui/react'
+import { Form, useField } from 'react-final-form'
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-const Wrapper = ({proto, setProto}) => {
+const onSubmit = async values => {
+  await sleep(300)
+  window.alert(JSON.stringify(values, 0, 2))
+}
 
-    const [close, closeButton] = useBoolean()
-    const [message, setMessage] = useState([])
-    const onSubmit = async () => {
-        let req;
-        proto ? req = 'UDP' : req = 'TCP'
-        console.log(`This is ${req}`)
-        console.log(`Close button: ${close}`)
-    
-        console.log(`Close in button: ${close}`)
-        const res = await connectionRequest(req)
-        
-    
-        console.log(res.messageFromClient)
-        setMessage(res.messageFromClient) 
-    }
-
-
-
-    return (
-        <Flex>
+const Textr = () => (
+  <ThemeProvider theme={theme}>
+    <Box w={500} p={4} m="20px auto">
+    <Flex>
             <Box py={6} px={[2, 5, 12, 24]}>
                 <Box
                     maxW={'370px'}
@@ -80,7 +69,6 @@ const Wrapper = ({proto, setProto}) => {
         render={({
           handleSubmit,
           form,
-          errors,
           submitting,
           pristine,
           values
@@ -96,16 +84,7 @@ const Wrapper = ({proto, setProto}) => {
             <InputControl name="message" label="Send Message" />
             <ButtonGroup spacing={4}>
               <Button
-                isLoading={submitting}
-                loadingText="Submitting"
-                variantColor="teal"
-                type="submit"
-              >
-                Submit
-              </Button>
-              <Button
                 variant="outline"
-                onClick={form.reset}
                 isDisabled={submitting || pristine}
                 isLoading={submitting}
                                     loadingText="Listening to Requests"
@@ -113,6 +92,22 @@ const Wrapper = ({proto, setProto}) => {
                                     w={'full'}
                                     mt={1}
                                     bg={useColorModeValue('#48BB78', 'green.400')}
+                                    color={'white'}
+                                    rounded={'md'}
+                                    _hover={{
+                                    transform: 'translateY(-2px)',
+                                    boxShadow: 'lg'
+                                    }}
+              >
+                Submit
+              </Button>
+              <Button
+                variant="outline"
+                onClick={form.reset}
+                isDisabled={submitting || pristine}
+                                    w={'full'}
+                                    mt={1}
+                                    bg={useColorModeValue('#48BB78', 'red.400')}
                                     color={'white'}
                                     rounded={'md'}
                                     _hover={{
@@ -147,14 +142,30 @@ const Wrapper = ({proto, setProto}) => {
                     overflow={'hidden'}
                 >
                     <Box p={6}>
-                        <Heading fontSize={'lg'}>Connection Mode: {proto ? 'UDP' : 'TCP'} Close Button: {close.toString()}</Heading>
-                        {message}
+                        <Heading fontSize={'lg'}>Connection Mode:  Close Button:</Heading>
+                        {/* {message} */}
                     </Box>
                 </Box>
             </Box>
         </Flex>
+    </Box>
+  </ThemeProvider>
+)
 
-    )
+const InputControl = ({ name, label }) => {
+  const { input, meta } = useField(name)
+  return (
+      <>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <Input
+        {...input}
+        isInvalid={meta.error && meta.touched}
+        id={name}
+        placeholder="Hello Server"
+      />
+      </>
+  )
 }
 
-export default Wrapper
+
+export default Textr
