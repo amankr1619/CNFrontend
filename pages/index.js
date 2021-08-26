@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Layout from '../components/Layout'
+
 import {
   Container,
   Wrap,
@@ -19,6 +20,7 @@ import {
 
 
 export default function Home() {
+  
   return (
     <Layout>
       <Head>
@@ -156,7 +158,7 @@ export default function Home() {
                 pb={4}
                 fontSize={'4xl'}
                 fontFamily={'body'}>
-                Let's Get Stared!
+                Get Stared!
               </Heading>
               <Stack paddingTop="5" spacing={5} align={'center'} mb={5}>
                 <Link href="/server" isExternal>

@@ -13,14 +13,19 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@material-ui/icons": "^4.11.2",
-    "agentkeepalive": "^4.1.4",
     "axios": "^0.21.1",
-    "formik": "^2.2.9",
     "framer-motion": "^4",
-    "http": "^0.0.1-security",
-    "next": "10.x",
+    "next": "^11.1.0",
     "react": "17.x",
     "react-dom": "17.x",
     "react-final-form": "^6.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
