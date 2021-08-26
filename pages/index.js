@@ -62,23 +62,23 @@ export default function Home() {
                   shadow="1px 1px 3px rgba(0,0,0,0.3)"
                   textColor="grey.700"
                 >
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Aman Kumar
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE127 - Aman Kumar
                   </Text>
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Aniket Ransing
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE121 - Aniket Ransing
                   </Text>
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Bhunesh Mera
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE018 - Bhunesh Mera
                   </Text>
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Bhushan Bhamare
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE070 - Bhushan Bhamare
                   </Text>
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Gaurav Bhandarakar
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE128 - Gaurav Bhandarakar
                   </Text>
-                  <Text fontSize='30' color={'black.500'} textAlign='center' >
-                    Suraj Khedkar
+                  <Text fontSize='30' color={'black.500'} >
+                    BT19CSE104 - Suraj Khedkar
                   </Text>
                 </Box>
               </Stack>
