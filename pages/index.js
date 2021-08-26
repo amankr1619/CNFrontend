@@ -3,19 +3,14 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 
 import {
-  Container,
-  Wrap,
   Box,
   Heading,
   Flex,
   Text,
   Link,
-  Center,
   Stack,
   Button,
   useColorModeValue,
-  Switch,
-  useBoolean
 } from "@chakra-ui/react"
 
 
@@ -62,22 +57,22 @@ export default function Home() {
                   shadow="1px 1px 3px rgba(0,0,0,0.3)"
                   textColor="grey.700"
                 >
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE127 - Aman Kumar
                   </Text>
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE121 - Aniket Ransing
                   </Text>
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE018 - Bhunesh Mera
                   </Text>
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE070 - Bhushan Bhamare
                   </Text>
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE128 - Gaurav Bhandarakar
                   </Text>
-                  <Text fontSize='30' color={'black.500'} >
+                  <Text fontSize='24' color={'black.500'} >
                     BT19CSE104 - Suraj Khedkar
                   </Text>
                 </Box>
@@ -121,7 +116,8 @@ export default function Home() {
                   textColor="grey.700"
                 >
                   <Text fontSize='18' color={useColorModeValue('white', 'gray.800')} textAlign='center' >
-                    A network socket is a software structure within a network node of a computer network that serves as an endpoint for sending and receiving data across the network. We Implemented API and Frontend using React.js .
+                    A network socket is a software structure within a network node of a computer network that
+                    serves as an endpoint for sending and receiving data across the network. We Implemented API and Frontend using React.js .
                   </Text>
                 </Box>
               </Stack>
