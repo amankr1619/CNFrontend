@@ -15,7 +15,7 @@
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "framer-motion": "^4",
-    "next": "^11.1.0",
+    "next": "^11.1.1",
     "react": "17.x",
     "react-dom": "17.x",
     "react-final-form": "^6.5.3"
